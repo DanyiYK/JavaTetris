@@ -8,6 +8,7 @@ public class Main extends JFrame {
 	public static void main(String[] args) throws InterruptedException {
 		// Make GameData
 		
+		GameData data = new GameData();
 		Renderer gameRenderer = new Renderer();
 		
 		while(gameRenderer.isVisible()) {
