@@ -9,13 +9,15 @@ public class Main extends JFrame {
 		// Make GameData
 		
 		GameData data = new GameData();
-		Renderer gameRenderer = new Renderer();
+		Renderer gameRenderer = new Renderer(data);
 		
 		while(gameRenderer.isVisible()) {
 			
+			// check if (new_time-last_time) >= 1, if so, shift MovingBlock by one pixel
+			
 			gameRenderer.repaint();
 			
-			Thread.sleep(16);
+			Thread.sleep(16); // ~60 frames per second
 		}
 		
 		System.out.println("Game closed!");

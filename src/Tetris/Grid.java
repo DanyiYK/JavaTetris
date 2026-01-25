@@ -1,6 +1,8 @@
 package Tetris;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Random;
 
 /**
  * Grid will contain a number from 0 (empty) to 8 (7 colored pieces)
@@ -8,11 +10,19 @@ import java.awt.Color;
 
 public class Grid {
 	public int[][] grid;
+	static int pixelSize = 30;
 	public int gridSizeX = 10;
 	public int gridSizeY = 20;
 	
 	public Grid() {
-		this.grid = new int[gridSizeY-1][gridSizeX-1];
+		this.grid = new int[gridSizeY][gridSizeX];
+		
+		for(int i = 0; i < gridSizeY; i++) {
+			for(int j = 0; j < gridSizeX; j++) {
+				this.grid[i][j] = Math.toIntExact(Math.round(Math.random()*8));
+			}
+		}
+		
 		System.out.println("" + this.grid[0][0]);
 	}
 	
@@ -42,6 +52,34 @@ public class Grid {
 	 */
 	public void placeBlock(int[][] blockData, int x, int y) {
 		
+	}
+	
+	/**
+	 * Draws the grid on the canvas
+	*/
+	public void draw(Graphics graphics) {
+		int value;
+		
+		// Blocks
+		for(int y = 0; y < gridSizeY; y++) {
+			for(int x = 0; x < gridSizeX; x++) {
+				value = grid[y][x];
+				
+				graphics.setColor(pixelValuetoColor(value));
+				graphics.fillRect(x*pixelSize, y*pixelSize, pixelSize, pixelSize);
+			}
+		}
+		
+		// Outline
+		graphics.setColor(Color.WHITE);
+		
+		for(int y = 0; y < gridSizeY; y++) {
+			graphics.drawRect(0, y*pixelSize, gridSizeX*pixelSize, pixelSize);
+		}
+		
+		for(int x = 0; x < gridSizeX; x++) {
+			graphics.drawRect(x*pixelSize, 0, pixelSize, gridSizeY*pixelSize);
+		}
 	}
 	
 	/*

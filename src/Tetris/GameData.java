@@ -6,5 +6,7 @@ public class GameData {
 	
 	public GameData() {
 		Grid gameGrid = new Grid();
+		
+		this.gameGrid = gameGrid;
 	}
 }

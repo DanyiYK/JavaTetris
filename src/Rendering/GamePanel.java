@@ -7,13 +7,21 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import Tetris.GameData;
+import Tetris.Grid;
+
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel {
-	private static final long serialVersionUID = 1L;
 	final static Font gameFont = new Font("Arial", Font.PLAIN, 12);
 
 	public long timeSinceLastFrame = 1;
+	public GameData gameData;
+	public Grid grid;
 	
-	public GamePanel() {
+	public GamePanel(GameData data) {
+		this.gameData = data;
+		this.grid = data.gameGrid;
+		
 		setBackground(Color.WHITE);
 	}
 	
@@ -35,7 +43,7 @@ public class GamePanel extends JPanel {
 	}
 	
 	public void paintComponent(Graphics graphics) {
-		System.out.println("Updated!");
+		// System.out.println("Updated!");
 		super.paintComponent(graphics);
 		
 		// Clear background
@@ -43,13 +51,17 @@ public class GamePanel extends JPanel {
 		graphics.fillRect(0, 0, 480, 720);
 		
 		// TODO: Draw grid
+		grid.draw(graphics);
 		
 		// TODO: Draw moving block
 		
-		// Draw FPS and update time
+		// Draw game stats like fps, score, and next block (this last one is TODO)
 		graphics.setColor(Color.BLACK);
+		
 		graphics.setFont(gameFont);
+		
 		graphics.drawString(getFPSLabelText(), 425, 22);
+		graphics.drawString(gameData.score + " Points", 425, 40);
 		
 		timeSinceLastFrame = System.currentTimeMillis();
 	}
