@@ -2,7 +2,6 @@ package Tetris;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Random;
 
 /**
  * Grid will contain a number from 0 (empty) to 8 (7 colored pieces)
@@ -10,11 +9,16 @@ import java.util.Random;
 
 public class Grid {
 	public int[][] grid;
-	static int pixelSize = 30;
-	public int gridSizeX = 10;
-	public int gridSizeY = 20;
 	
-	public Grid() {
+	int startGridPositionX, startGridPositionY, gridSizeX, gridSizeY, pixelSize;
+	
+	public Grid(GameData data) {
+		this.startGridPositionX = data.startGridPositionX;
+		this.startGridPositionY = data.startGridPositionY;
+		this.gridSizeX = data.gridSizeX;
+		this.gridSizeY = data.gridSizeY;
+		this.pixelSize = data.pixelSize;
+		
 		this.grid = new int[gridSizeY][gridSizeX];
 		
 		for(int i = 0; i < gridSizeY; i++) {
@@ -22,8 +26,6 @@ public class Grid {
 				this.grid[i][j] = Math.toIntExact(Math.round(Math.random()*8));
 			}
 		}
-		
-		System.out.println("" + this.grid[0][0]);
 	}
 	
 	/**
@@ -56,29 +58,30 @@ public class Grid {
 	
 	/**
 	 * Draws the grid on the canvas
+	 * TODO: Add an offset
 	*/
 	public void draw(Graphics graphics) {
-		int value;
+		int pixelValue;
 		
-		// Blocks
+		// Draw grid pixels
 		for(int y = 0; y < gridSizeY; y++) {
 			for(int x = 0; x < gridSizeX; x++) {
-				value = grid[y][x];
+				pixelValue = grid[y][x];
 				
-				graphics.setColor(pixelValuetoColor(value));
-				graphics.fillRect(x*pixelSize, y*pixelSize, pixelSize, pixelSize);
+				graphics.setColor(pixelValuetoColor(pixelValue));
+				graphics.fillRect(startGridPositionX+x*pixelSize, startGridPositionY+y*pixelSize, pixelSize, pixelSize);
 			}
 		}
 		
 		// Outline
-		graphics.setColor(Color.WHITE);
+		graphics.setColor(Color.BLACK);
 		
 		for(int y = 0; y < gridSizeY; y++) {
-			graphics.drawRect(0, y*pixelSize, gridSizeX*pixelSize, pixelSize);
+			graphics.drawRect(startGridPositionX, startGridPositionY+y*pixelSize, gridSizeX*pixelSize, pixelSize);
 		}
 		
 		for(int x = 0; x < gridSizeX; x++) {
-			graphics.drawRect(x*pixelSize, 0, pixelSize, gridSizeY*pixelSize);
+			graphics.drawRect(startGridPositionX+x*pixelSize, startGridPositionY, pixelSize, gridSizeY*pixelSize);
 		}
 	}
 	

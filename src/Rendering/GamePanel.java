@@ -47,21 +47,20 @@ public class GamePanel extends JPanel {
 		super.paintComponent(graphics);
 		
 		// Clear background
-		graphics.setColor(Color.WHITE);
+		graphics.setColor(Color.DARK_GRAY);
 		graphics.fillRect(0, 0, 480, 720);
 		
-		// TODO: Draw grid
 		grid.draw(graphics);
 		
 		// TODO: Draw moving block
 		
 		// Draw game stats like fps, score, and next block (this last one is TODO)
-		graphics.setColor(Color.BLACK);
+		graphics.setColor(Color.WHITE);
 		
 		graphics.setFont(gameFont);
 		
-		graphics.drawString(getFPSLabelText(), 425, 22);
-		graphics.drawString(gameData.score + " Points", 425, 40);
+		graphics.drawString(getFPSLabelText(), 400, 22);
+		graphics.drawString(gameData.score + " Points", 400, 40);
 		
 		timeSinceLastFrame = System.currentTimeMillis();
 	}

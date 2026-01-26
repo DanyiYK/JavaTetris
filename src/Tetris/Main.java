@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import Rendering.Renderer;
 
+@SuppressWarnings("serial")
 public class Main extends JFrame {
 	public static void main(String[] args) throws InterruptedException {
 		// Make GameData
