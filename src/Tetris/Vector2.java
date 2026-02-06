@@ -2,10 +2,10 @@ package Tetris;
 
 // The game is renderer on a grid, blocks's position and size are represented with integers.
 public class Vector2 {
-	int x;
-	int y;
+	public int x;
+	public int y;
 	
-	Vector2(int x, int y){
+	public Vector2(int x, int y){
 		this.x = x;
 		this.y = y;
 	}

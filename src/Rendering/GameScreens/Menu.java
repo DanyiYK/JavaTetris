@@ -60,19 +60,27 @@ public class Menu extends JPanel implements Screen {
 		int width = this.getWidth();
 		int height = this.getHeight();
 		
-		graphics.setColor(Color.WHITE);
+		graphics.setColor(Color.DARK_GRAY);
 		graphics.fillRect(0, 0, width, height);
 		
-		graphics.setColor(Color.MAGENTA);		
 		graphics.setFont(new Font("Arial", Font.BOLD, 48));
-		GraphicUtility.draw_centered_string(graphics, "Tetris", width/2, height/2-30);
+		
+		graphics.setColor(Color.BLUE);		
+		GraphicUtility.draw_string_with_shadow(graphics, "Tetris", width/2, height/2-30, new Color(0, 0, 100));
 		
 		graphics.setFont(main_font);
 		graphics.setColor(Color.BLACK);
 		
+		boolean isSelected;
+		String str;
 		for(int i = 0; i < options.length; i++) {
-			graphics.setColor(i==selectedOption? Color.BLUE:Color.BLACK);
-			GraphicUtility.draw_centered_string(graphics, (i==selectedOption? "> ":"") + options[i] + (i==selectedOption? " <":""), width/2, height/2 + (6 + main_font.getSize()) * i);
+			isSelected = i==selectedOption;
+			str = (isSelected? "> ":"") + options[i] + (isSelected? " <":"");
+			
+			graphics.setColor(isSelected? Color.CYAN:Color.WHITE);
+			GraphicUtility.draw_string_with_shadow(graphics, str, width/2, height/2 + (6 + main_font.getSize()) * i, Color.LIGHT_GRAY);
+			
+			//GraphicUtility.draw_centered_string(graphics, (isSelected? "> ":"") + options[i] + (isSelected? " <":""), width/2, height/2 + (6 + main_font.getSize()) * i);
 		}
 	}
 
