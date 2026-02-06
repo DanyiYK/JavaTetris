@@ -10,7 +10,10 @@ import java.awt.Graphics;
 public class Grid {
 	public int[][] grid;
 	
-	int startGridPositionX, startGridPositionY, gridSizeX, gridSizeY, pixelSize;
+	public Vector2 position;
+	public Vector2 size;
+	public int pixel_size;
+	
 	private static final Color[] VALUES_TO_COLOR = {
 			Color.WHITE,
 			Color.RED,
@@ -23,17 +26,16 @@ public class Grid {
 			Color.YELLOW,
 	};
 	
-	public Grid(GameData data) {
-		this.startGridPositionX = data.startGridPositionX;
-		this.startGridPositionY = data.startGridPositionY;
-		this.gridSizeX = data.gridSizeX;
-		this.gridSizeY = data.gridSizeY;
-		this.pixelSize = data.pixelSize;
+	public Grid(Vector2 grid_position, Vector2 grid_size, int pixel_size) {
 		
-		this.grid = new int[gridSizeY][gridSizeX];
+		this.position = grid_position;
+		this.size = grid_size;
+		this.pixel_size = pixel_size;
 		
-		for(int i = 0; i < gridSizeY; i++) {
-			for(int j = 0; j < gridSizeX; j++) {
+		this.grid = new int[size.y][size.x];
+		
+		for(int i = 0; i < size.y; i++) {
+			for(int j = 0; j < size.x; j++) {
 				this.grid[i][j] = Math.toIntExact(Math.round(Math.random()*8));
 			}
 		}

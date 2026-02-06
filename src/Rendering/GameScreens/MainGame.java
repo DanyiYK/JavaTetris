@@ -2,12 +2,8 @@ package Rendering.GameScreens;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineMetrics;
 
 import javax.swing.JPanel;
 
@@ -17,7 +13,7 @@ import Rendering.Screen;
 import Tetris.MovingBlock;
 
 public class MainGame extends JPanel implements Screen {
-
+	public final Grid grid = new Grid();
 	public MovingBlock[] movingBlocks = new MovingBlock[2];
 	
 	@Override
