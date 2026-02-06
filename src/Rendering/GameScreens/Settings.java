@@ -28,7 +28,7 @@ public class Settings extends JPanel implements Screen {
 	
 	public void paintComponent(Graphics graphics) {
 		graphics.setColor(Color.WHITE);
-		graphics.fillRect(0, 0,this.getWidth() , this.getHeight());
+		graphics.fillRect(0, 0,this.getWidth(), this.getHeight());
 		
 		graphics.setFont(main_font);
 		

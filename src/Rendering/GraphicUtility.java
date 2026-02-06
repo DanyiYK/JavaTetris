@@ -8,7 +8,7 @@ import Tetris.Vector2;
 
 public class GraphicUtility {
 	static final int TOOLBAR_OFFSET = 22;
-	static final Vector2 SHADOW_OFFSET = new Vector2(1, 1);
+	static final Vector2 SHADOW_OFFSET = new Vector2(2, 2);
 	
 	public static void draw_string_with_shadow(Graphics graphics, String str, int x, int y, Color shadow_color) {
 		Color old_color = graphics.getColor();

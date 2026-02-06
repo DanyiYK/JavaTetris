@@ -12,6 +12,12 @@ public class Renderer extends JFrame implements KeyListener {
 	private static final int START_SCREEN = 0;
 	private static final long serialVersionUID = 1L;
 	
+	static enum screenType {
+			menu,
+			settings,
+			game
+	}
+	
 	public Screen[] gameScreens = {
 		new Menu(),
 		new Settings(),

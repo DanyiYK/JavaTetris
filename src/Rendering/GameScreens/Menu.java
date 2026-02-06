@@ -60,13 +60,13 @@ public class Menu extends JPanel implements Screen {
 		int width = this.getWidth();
 		int height = this.getHeight();
 		
-		graphics.setColor(Color.DARK_GRAY);
+		graphics.setColor(new Color(185, 100, 100));
 		graphics.fillRect(0, 0, width, height);
 		
 		graphics.setFont(new Font("Arial", Font.BOLD, 48));
 		
 		graphics.setColor(Color.BLUE);		
-		GraphicUtility.draw_string_with_shadow(graphics, "Tetris", width/2, height/2-30, new Color(0, 0, 100));
+		GraphicUtility.draw_string_with_shadow(graphics, "Tetris", width/2, height/2-50, new Color(0, 0, 100));
 		
 		graphics.setFont(main_font);
 		graphics.setColor(Color.BLACK);
@@ -78,7 +78,7 @@ public class Menu extends JPanel implements Screen {
 			str = (isSelected? "> ":"") + options[i] + (isSelected? " <":"");
 			
 			graphics.setColor(isSelected? Color.CYAN:Color.WHITE);
-			GraphicUtility.draw_string_with_shadow(graphics, str, width/2, height/2 + (6 + main_font.getSize()) * i, Color.LIGHT_GRAY);
+			GraphicUtility.draw_centered_string(graphics, str, width/2, height/2 + 44*i);
 			
 			//GraphicUtility.draw_centered_string(graphics, (isSelected? "> ":"") + options[i] + (isSelected? " <":""), width/2, height/2 + (6 + main_font.getSize()) * i);
 		}

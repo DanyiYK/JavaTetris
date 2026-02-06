@@ -14,12 +14,19 @@ import javax.swing.JPanel;
 import Rendering.GraphicUtility;
 import Rendering.Renderer;
 import Rendering.Screen;
+import Tetris.MovingBlock;
 
 public class MainGame extends JPanel implements Screen {
 
+	public MovingBlock[] movingBlocks = new MovingBlock[2];
+	
 	@Override
 	public void parseKey(Renderer renderer, KeyEvent e) {
 		renderer.setScreen(0);
+	}
+	
+	public void start(Renderer renderer, Settings settings) {
+		// Setup game (create first moving blocks, set base game speed and idk)
 	}
 	
 	@Override
