@@ -21,14 +21,34 @@ public class Menu extends JPanel implements Screen {
 	
 	private int selectedOption = 0;
 	
+	public void select_option(Renderer renderer) {
+		switch(selectedOption) {
+		case 0:
+			break;
+		case 1:
+			renderer.setScreen(1);
+			break;
+		}
+	}
+	
 	@Override
 	public void parseKey(Renderer renderer, KeyEvent e) {
-		renderer.setScreen(1);
+		switch(e.getKeyCode()) {
+		case 38: // Up
+			selectedOption = selectedOption-1==-1?options.length-1:selectedOption-1;
+			break;
+		case 40: // Down
+			selectedOption = selectedOption+1==options.length?0:selectedOption+1;
+			break;
+		case 10: // Enter
+			select_option(renderer);
+			break;
+		}
+		System.out.println(selectedOption);
 	}
 
 	@Override
 	public void step(Renderer renderer) {
-		System.out.println("Stepped!");
 		this.repaint();
 	}
 
@@ -49,8 +69,11 @@ public class Menu extends JPanel implements Screen {
 		
 		graphics.setFont(main_font);
 		graphics.setColor(Color.BLACK);
-		GraphicUtility.draw_centered_string(graphics, "Play!", width/2, height/2);
-		GraphicUtility.draw_centered_string(graphics, "Settings", width/2, height/2+22);
+		
+		for(int i = 0; i < options.length; i++) {
+			graphics.setColor(i==selectedOption? Color.BLUE:Color.BLACK);
+			GraphicUtility.draw_centered_string(graphics, options[i], width/2, height/2 + 22 * i);
+		}
 	}
 
 }

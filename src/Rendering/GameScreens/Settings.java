@@ -14,7 +14,7 @@ public class Settings extends JPanel implements Screen {
 
 	@Override
 	public void parseKey(Renderer renderer, KeyEvent e) {
-		renderer.setScreen(2);
+		renderer.setScreen(0);
 	}
 
 	@Override
