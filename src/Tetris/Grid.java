@@ -11,6 +11,17 @@ public class Grid {
 	public int[][] grid;
 	
 	int startGridPositionX, startGridPositionY, gridSizeX, gridSizeY, pixelSize;
+	private static final Color[] VALUES_TO_COLOR = {
+			Color.WHITE,
+			Color.RED,
+			Color.GREEN,
+			Color.CYAN,
+			Color.MAGENTA,
+			Color.BLUE,
+			Color.ORANGE,
+			Color.PINK,
+			Color.YELLOW,
+	};
 	
 	public Grid(GameData data) {
 		this.startGridPositionX = data.startGridPositionX;
@@ -90,17 +101,10 @@ public class Grid {
 	 * As for now, I think this is good i guess.
 	 */
 	public Color pixelValuetoColor(int value) {
-		return switch(value) {
-			case 0 -> Color.WHITE;
-			case 1 -> Color.RED;
-			case 2 -> Color.GREEN;
-			case 3 -> Color.CYAN;
-			case 4 -> Color.MAGENTA;
-			case 5 -> Color.BLUE;
-			case 6 -> Color.ORANGE;
-			case 7 -> Color.PINK;
-			case 8 -> Color.YELLOW;
-			default -> Color.WHITE;
-		};
+		if(value < 0 || value >= VALUES_TO_COLOR.length) {
+			return Color.BLACK;
+		}
+		
+		return VALUES_TO_COLOR[value];
 	}
 }
