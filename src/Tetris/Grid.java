@@ -71,6 +71,8 @@ public class Grid {
 	 * Draws the grid on the canvas
 	 * TODO: Add an offset
 	*/
+	
+	/** TODO: Move this in MainGame please :3
 	public void draw(Graphics graphics) {
 		int pixelValue;
 		
@@ -95,12 +97,9 @@ public class Grid {
 			graphics.drawRect(startGridPositionX+x*pixelSize, startGridPositionY, pixelSize, gridSizeY*pixelSize);
 		}
 	}
+	*/
 	
-	/*
-	 * I don't know if there's a better way to do this, if so, I'd like to be corrected.
-	 * As for now, I think this is good i guess.
-	 */
-	public Color pixelValuetoColor(int value) {
+	public Color pixel_value_to_color(int value) {
 		if(value < 0 || value >= VALUES_TO_COLOR.length) {
 			return Color.BLACK;
 		}
