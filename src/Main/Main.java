@@ -15,9 +15,6 @@ public class Main extends JFrame {
 	
 	public void initializeMainLoop() throws InterruptedException {
 		while(renderer.isVisible()) {
-			
-			// check if (new_time-last_time) >= 1, if so, shift MovingBlock by one pixel
-			
 			renderer.currentScreen.step(renderer);
 			
 			Thread.sleep(16); // ~60 frames per second

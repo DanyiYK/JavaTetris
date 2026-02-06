@@ -14,7 +14,7 @@ import Rendering.Screen;
 
 public class Menu extends JPanel implements Screen {
 	private static final String[] options = {
-		"Play!",
+		"Play",
 		"Options",
 		"Credits"
 	};
@@ -65,14 +65,14 @@ public class Menu extends JPanel implements Screen {
 		
 		graphics.setColor(Color.MAGENTA);		
 		graphics.setFont(new Font("Arial", Font.BOLD, 48));
-		GraphicUtility.draw_centered_string(graphics, "Tetris", width/2, height/2-50);
+		GraphicUtility.draw_centered_string(graphics, "Tetris", width/2, height/2-30);
 		
 		graphics.setFont(main_font);
 		graphics.setColor(Color.BLACK);
 		
 		for(int i = 0; i < options.length; i++) {
 			graphics.setColor(i==selectedOption? Color.BLUE:Color.BLACK);
-			GraphicUtility.draw_centered_string(graphics, options[i], width/2, height/2 + 22 * i);
+			GraphicUtility.draw_centered_string(graphics, (i==selectedOption? "> ":"") + options[i] + (i==selectedOption? " <":""), width/2, height/2 + (6 + main_font.getSize()) * i);
 		}
 	}
 
