@@ -1,37 +1,40 @@
 package Tetris;
 
+import java.awt.event.KeyEvent;
+
 public class MovingBlock {
-	int[][] matrix;
-	int[][] original_matrix;
-	int centerX, centerY;
+	int[][] form;
+	int centerX, centerY, positionX, positionY;
 	
-	public MovingBlock(int[][] matrix, int centerX, int centerY) {
-		this.original_matrix = matrix;
-		this.centerX = centerX;
-		this.centerY = centerY;
+	public MovingBlock() {
+		
 	}
 	
-	public static MovingBlock[] initMainBlocks() {
-		MovingBlock[] blocks = new MovingBlock[10];
+	public void setForm(BlockForm form) {
+		this.form = form.form;
+		this.centerX = form.centerX;
+		this.centerY = form.centerY;
 		
-		int[][] blockForm = {
-			{1, 1},
-			{1, 1}
-		};
-		blocks[0] = new MovingBlock(blockForm, 0, 0); 
+		this.positionX = 0;
+		this.positionY = 0;
+	}
+	
+	public boolean check_for_collision(Grid grid, int future_position_x, int future_position_y) {
+		// block position is start_grid_position + block_relative_position + block_position - this.center
+		for(int y = 0; y < this.form.length; y++) {
+			for(int x = 0; x < this.form[y].length; x++) {
+				
+			}
+		}
 		
-		int[][] SForm = {
-				{0, 1, 1},
-				{1, 1, 0}
-			};
-		blocks[1] = new MovingBlock(SForm, 0, 0); 		
+		return true;
+	}
+	
+	public void parseKey(KeyEvent key) {
 		
-		int[][] LForm = {
-				{1, 1, 1},
-				{1, 0, 0}
-			};
-		blocks[0] = new MovingBlock(LForm, 0, 0); 
+	}
+	
+	public void paint() {
 		
-		return blocks;
 	}
 }
